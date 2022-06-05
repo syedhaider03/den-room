@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      function load() {
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+          get: (searchParams, prop) => searchParams.get(prop),
+        });
+        // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
+        let value = params.roomId;
+        window.open(
+          `intent://scan/#Intent;scheme=chatroom://Room?roomId=${value};package=com.thedenapp;S.browser_fallback_url=https://play.google.com/store/apps/details?id=com.thedenapp;end`
+        );
+      }
+    </script>
+  </head>
+
+  <body onload="load()"></body>
+</html>
